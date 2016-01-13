@@ -1,0 +1,8 @@
+{
+  "name": "gamificationApiTest",
+  "devDependencies": {
+    "angular": "~1.4.8",
+    "angular-md5": "~0.1.10",
+    "jquery": "~2.1.4"
+  }
+}

@@ -1,0 +1,17 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="icons/flaticon.css">
+  <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body ng-app="test" ng-controller="MainCtrl as ctrl">
+  <div id="user-area">
+    <input type="text" name="name" ng-model="ctrl.name" placeholder="Write your name here"/>
+    <button type="button" ng-click="ctrl.startGame">Start</button>
+  </div>
+  <game-machine>
+  </game-machine>
+</body>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="app-build.js"></script>
+</html>

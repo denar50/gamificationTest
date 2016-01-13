@@ -1,0 +1,9 @@
+#game-panel
+{
+  .slot{
+    display: inline-block;
+    &:before{
+      font-size: 100px;
+    }
+  }
+}
