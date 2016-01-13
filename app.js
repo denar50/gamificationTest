@@ -1,7 +1,7 @@
 angular.module('test', ['ngResource', 'angular-md5']);
 
-angular.module('test').controller('MainCtrl', ['gameApi', 'gState',
-function(gameApi, gState){
+angular.module('test').controller('MainCtrl', ['gameApi', 'gState', '$q',
+function(gameApi, gState, $q){
   var ctrl = this;
   var listenersToDestroy = [];
 
@@ -21,10 +21,16 @@ function(gameApi, gState){
   };
 
   ctrl.afterPlayFx = function(hasWon){
-    debugger;
+    var defer = $q.defer();
     if(hasWon){
-      gameApi.play();
+      gameApi.play().then(function(){
+        defer.resolve();
+      });
     }
+    else{
+      defer.resolve();
+    }
+    return defer.promise;
   };
 
 }]);

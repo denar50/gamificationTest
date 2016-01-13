@@ -1,5 +1,5 @@
-angular.module('test').factory('gameApi', ['md5', '$resource', 'gState',
-function(md5, $resource, gState){
+angular.module('test').factory('gameApi', ['md5', '$resource', 'gState', '$q',
+function(md5, $resource, gState, $q){
   var player = $resource('/api/player/:email', {email: '@email'});
   var play = $resource('/api/play/:email', {email: '@email'});
   var api = {};
@@ -17,9 +17,19 @@ function(md5, $resource, gState){
   };
 
   api.play = function(){
-    return play.save({email: md5.createHash(gState.email)}).$promise.then(function(){
-      api.getPlayer();
+    var defer = $q.defer();
+    play.save({email: md5.createHash(gState.email)}).$promise.then(function(){
+      api.getPlayer().then(function(){
+        defer.resolve();
+      })
+      .then(function(){
+        defer.reject();
+      })
+      .then(function(){
+        defer.reject();
+      });
     });
+    return defer.promise;
   };
 
   return api;

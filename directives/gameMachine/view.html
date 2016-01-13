@@ -1,13 +1,13 @@
-<div>
-    <div id="game-panel" ng-class="{'win' : gameMachineCtrl.hasWon === true, 'lost' : gameMachineCtrl.hasLost === false}">
-      <div class="slot {{gameMachineCtrl.currentShapes[0]}}">
+<div class="columns large-8 large-centered">
+    <div id="game-panel" ng-class="{'win' : gameMachineCtrl.hasWon === true, 'lost' : gameMachineCtrl.hasLost === false}" class="row">
+      <div class="slot columns large-4 {{gameMachineCtrl.currentShapes[0]}}">
       </div>
-      <div class="slot {{gameMachineCtrl.currentShapes[1]}}">
+      <div class="slot columns large-4 {{gameMachineCtrl.currentShapes[1]}}">
       </div>
-      <div class="slot {{gameMachineCtrl.currentShapes[2]}}">
+      <div class="slot columns large-4 {{gameMachineCtrl.currentShapes[2]}}">
       </div>
     </div>
     <div>
-      <button ng-click="gameMachineCtrl.play()" ng-disabled="gameMachineCtrl.playing">Play</button>
+      <button class="play-button" ng-click="gameMachineCtrl.play()" ng-disabled="gameMachineCtrl.playing"></button>
     </div>
 </div>

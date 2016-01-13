@@ -4,28 +4,39 @@
   <link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body ng-app="test" ng-controller="MainCtrl as ctrl">
-  <div id="user-area" ng-form="ctrl.form">
-    <input type="email" name="email" ng-model="ctrl.email" placeholder="Write your email here"/>
-    <button ng-disabled="ctrl.form.email.$pristine || ctrl.form.email.$invalid" type="button" ng-click="ctrl.startGame()">Start</button>
-  </div>
+  <div class="row">
+    <div id="user-area" class="columns large-centered large-8" ng-form="ctrl.form">
+      <p>Write your email address to start the game. Your progress will be saved.</p>
+      <input type="email" name="email" ng-model="ctrl.email" placeholder="Write your email here"/>
+      <button ng-disabled="ctrl.form.email.$pristine || ctrl.form.email.$invalid" type="button" ng-click="ctrl.startGame()">Start</button>
+    </div>
 
-  <game-machine ng-if="ctrl.gState.player.info.id_in_app" after-play-fx="ctrl.afterPlayFx">
-  </game-machine>
-  <div ng-if="ctrl.gState.player.info.id_in_app">
-    Money: ${{ctrl.gState.player.info.currencies.dollar.quantity || 0}}<br/>
-    Level: {{ctrl.gState.player.info.levels.experience.name || 'Beginner'}} {{ctrl.gState.player.info.levels.experience.percentage || 0}}%
+    <game-machine ng-if="ctrl.gState.player.info.id_in_app" after-play-fx="ctrl.afterPlayFx">
+    </game-machine>
+    <div class="columns large-8 large-centered" ng-if="ctrl.gState.player.info.id_in_app">
+      Player information <br/>
+      Player: {{ctrl.gState.email}} <br/>
+      Money: ${{ctrl.gState.player.info.currencies.dollar.quantity || 0}}<br/>
+      Level: {{ctrl.gState.player.info.levels.experience.name || 'Beginner'}} {{ctrl.gState.player.info.levels.experience.percentage || 0}}%
+    </div>
+    <div class="columns large-8 large-centered" ng-if="ctrl.gState.player.info.id_in_app">
+      <span>Missions:</span>
+      <div id="missions-container">
+        <mission mission-tag="'win_5_games'">
+          <span>Win 5 games</span>
+        </mission>
+        <mission mission-tag="'win_10_games'">
+          <span>Win 10 games</span>
+        </mission>
+        <mission mission-tag="'win_15_games'">
+          <span>Win 15 games</span>
+        </mission>
+        <mission mission-tag="'win_20_games'">
+          <span>Win 20 games</span>
+        </mission>
+      </div>
+    </div>
   </div>
-  <div ng-if="ctrl.gState.player.info.id_in_app">
-    <mission mission-tag="'win_5_games'">
-    </mission>
-    <mission mission-tag="'win_10_games'">
-    </mission>
-    <mission mission-tag="'win_15_games'">
-    </mission>
-    <mission mission-tag="'win_20_games'">
-    </mission>
-  </div>
-
 </body>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>

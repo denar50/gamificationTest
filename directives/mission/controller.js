@@ -16,8 +16,13 @@ function(gState, $scope, $rootScope){
       ctrl.info = achieved[missionTag].actions[missionTag];
       ctrl.info.achieved = true;
     }
-    else{
-      ctrl.info = (available && available[missionTag] && available[missionTag].actions[missionTag]) || (upcoming && upcoming[missionTag] && upcoming[missionTag].actions[missionTag]);
+    else if(available && available[missionTag]){
+      ctrl.info = available[missionTag].actions[missionTag];
+      ctrl.info.available = true;
+    }
+    else if(upcoming && upcoming[missionTag]){
+      ctrl.info = upcoming[missionTag].actions[missionTag];
+      ctrl.info.upcoming = true;
     }
   };
   $rootScope.$watch(function(){

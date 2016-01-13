@@ -1,30 +1,126 @@
+@import 'bower_components/foundation/scss/normalize.scss';
+@import 'bower_components/foundation/scss/foundation.scss';
+
 #game-panel
 {
   .slot{
-    display: inline-block;
+    box-sizing: border-box;
+    color: white;
+    border: 5px solid white;
     &:before{
+      color: inherit;
       font-size: 100px;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      display: block;
+    }
+
+    &.flaticon-china1{
+      background-color: #4fc069;
+    }
+
+    &.flaticon-fruit235{
+      background-color: #c0694f;
+    }
+
+    &.flaticon-animal608{
+      background-color: #694fc0;
     }
   }
 }
 
+.play-button{
+  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  border: 10px solid #cc8772;
+  background-color: #c0694f;
+  margin: 0 auto;
+  display: block;
+  animation-name: touch-me;
+  animation-duration: 2s;
+  
+  &[disabled]:hover, &[disabled]{
+    background-color: #cc8772;
+    border-color: #cc8772;
+  }
+  &:focus{
+    background-color: #c0694f;
+  }
+  &:hover{
+    background-color: #c0694f;
+  }
+}
+@keyframes touch-me{
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100%{
+    opacity: 0.5
+  }
+}
+
+#missions-container{
+  text-align: center;
+}
+
+mission{
+ display: inline-block;
+ text-align: center;
+ margin-right: 10px;
+ &:last-child{
+   margin-right: 0;
+ }
+}
 .quest {
   font-size: 18px;
-  display: inline-block;
-  margin-right: 10px;
+  margin: 0 auto;
+
   color: white;
-  background-color: #3232FF;
+  background-color: #d8d8d8;
   height: 50px;
   width: 50px;
   border-radius: 50px;
   line-height: 50px;
   text-align: center;
+  position: relative;
 
   &.done{
-    background-color: #23B223;
+    background-color: #5CB25C;
+    &:before{
+      border-color: #90cb90;
+      border-bottom-color: white;
+      background-color: #3e833e;
+    }
   }
 
-  &:last-child{
-    margin-right: 0;
+  &.available {
+    background-color: #84C2FF;
+    &:before{
+      border-color: #d1e8ff;
+      border-bottom-color: white;
+      background-color: #85c2ff;
+    }
   }
+
+  &:before{
+    position: absolute;
+    content: '';
+    width: 50px;
+    background-color: #939392;
+    display: block;
+    left: 0;
+    border-left: 20px solid #b9b9b9;
+    border-right: 20px solid #b9b9b9;
+    border-top: 3px solid #b9b9b9;
+    height: 61px;
+    border-bottom: 25px solid white;
+    top: 26px;
+    z-index: -1;
+  }
+
 }

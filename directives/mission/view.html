@@ -1,3 +1,6 @@
-<div class="quest {{missionCtrl.statusClass()}}">
-  {{!missionCtrl.info.achieved ? missionCtrl.info.current_repetitions + '/' + missionCtrl.info.total_repetitions : missionCtrl.info.total_repetitions}}
-</div>
+<div>
+  <div ng-transclude></div>
+  <div class="quest" ng-class="{'available' : missionCtrl.info.available, 'done' : missionCtrl.info.achieved}">
+    {{!missionCtrl.info.achieved ? missionCtrl.info.current_repetitions + '/' + missionCtrl.info.total_repetitions : '&#10004;'}}
+  </div>
+<div>

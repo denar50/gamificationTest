@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "angular-md5": "~0.1.10",
-    "angular-resource": "~1.4.8"
+    "angular-resource": "~1.4.8",
+    "foundation": "~5.5.3"
   }
 }

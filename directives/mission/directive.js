@@ -4,6 +4,7 @@ function(){
     templateUrl: '/directives/mission/view.html',
     controller: 'MissionCtrl as missionCtrl',
     restrict: 'E',
+    transclude: true,
     scope: {
       missionTag: '=',
       text: '='

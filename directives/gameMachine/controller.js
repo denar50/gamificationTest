@@ -26,8 +26,15 @@ angular.module('test').controller('GameMachineCtrl', ['$interval', '$q', '$scope
     }
     $q.all(promises).then(function(){
       ctrl.hasWon = getWinStatus();
-      angular.isFunction($scope.afterPlayFx) && $scope.afterPlayFx(ctrl.hasWon);
-      ctrl.playing = false;
+      if(angular.isFunction($scope.afterPlayFx))
+      {
+         $scope.afterPlayFx(ctrl.hasWon).then(function(){
+           ctrl.playing = false;
+         });
+      }
+      else{
+        ctrl.playing = false;
+      }
     });
   }
 
@@ -56,8 +63,8 @@ angular.module('test').controller('GameMachineCtrl', ['$interval', '$q', '$scope
       intervalTime += 80;
       if(intervalTime >= miliseconds)
       {
-        //ctrl.currentShapes[index] = shapes[getRandomNumberBetween(1, shapes.length - 1)];
-        ctrl.currentShapes[index] = shapes[0];
+        ctrl.currentShapes[index] = shapes[getRandomNumberBetween(1, shapes.length - 1)];
+        //ctrl.currentShapes[index] = shapes[0];
         $interval.cancel(stop);
         stop = undefined;
         defer.resolve();
