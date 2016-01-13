@@ -11,11 +11,18 @@
 
   <game-machine ng-if="ctrl.gState.player.info.id_in_app" after-play-fx="ctrl.afterPlayFx">
   </game-machine>
-
   <div ng-if="ctrl.gState.player.info.id_in_app">
-    <mission text="10" mission-tag="'win_10_games'">
+    Money: ${{ctrl.gState.player.info.currencies.dollar.quantity || 0}}<br/>
+    Level: {{ctrl.gState.player.info.levels.experience.name || 'Beginner'}} {{ctrl.gState.player.info.levels.experience.percentage || 0}}%
+  </div>
+  <div ng-if="ctrl.gState.player.info.id_in_app">
+    <mission mission-tag="'win_5_games'">
     </mission>
-    <mission text="20" mission-tag="'win_20_games'">
+    <mission mission-tag="'win_10_games'">
+    </mission>
+    <mission mission-tag="'win_15_games'">
+    </mission>
+    <mission mission-tag="'win_20_games'">
     </mission>
   </div>
 

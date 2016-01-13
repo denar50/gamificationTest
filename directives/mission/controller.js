@@ -9,12 +9,15 @@ function(gState, $scope, $rootScope){
   ctrl.refresh = function(){
     var player = gState.player;
     var missionTag = $scope.missionTag;
-    if(player.missions.achieved[missionTag]){
-      ctrl.info = player.missions.achieved[missionTag].actions[missionTag];
+    var achieved = player.missions.achieved;
+    var available = player.missions.available;
+    var upcoming = player.missions.upcoming;
+    if(achieved && achieved[missionTag]){
+      ctrl.info = achieved[missionTag].actions[missionTag];
       ctrl.info.achieved = true;
     }
     else{
-      ctrl.info = player.missions.available[missionTag].actions[missionTag];
+      ctrl.info = (available && available[missionTag] && available[missionTag].actions[missionTag]) || (upcoming && upcoming[missionTag] && upcoming[missionTag].actions[missionTag]);
     }
   };
   $rootScope.$watch(function(){

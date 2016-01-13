@@ -13,7 +13,7 @@ function(md5, $resource, gState){
         missions: response.missions
       }
     });
-    return player.get({email: md5.createHash(userEmail)}).$promise;
+    return promise;
   };
 
   api.play = function(){
