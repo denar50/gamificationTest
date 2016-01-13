@@ -4,5 +4,9 @@
     "angular": "~1.4.8",
     "angular-md5": "~0.1.10",
     "jquery": "~2.1.4"
+  },
+  "dependencies": {
+    "angular-md5": "~0.1.10",
+    "angular-resource": "~1.4.8"
   }
 }

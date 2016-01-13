@@ -7,3 +7,24 @@
     }
   }
 }
+
+.quest {
+  font-size: 18px;
+  display: inline-block;
+  margin-right: 10px;
+  color: white;
+  background-color: #3232FF;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  line-height: 50px;
+  text-align: center;
+
+  &.done{
+    background-color: #23B223;
+  }
+
+  &:last-child{
+    margin-right: 0;
+  }
+}

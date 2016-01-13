@@ -4,14 +4,25 @@
   <link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body ng-app="test" ng-controller="MainCtrl as ctrl">
-  <div id="user-area">
-    <input type="text" name="name" ng-model="ctrl.name" placeholder="Write your name here"/>
-    <button type="button" ng-click="ctrl.startGame">Start</button>
+  <div id="user-area" ng-form="ctrl.form">
+    <input type="email" name="email" ng-model="ctrl.email" placeholder="Write your email here"/>
+    <button ng-disabled="ctrl.form.email.$pristine || ctrl.form.email.$invalid" type="button" ng-click="ctrl.startGame()">Start</button>
   </div>
-  <game-machine>
+
+  <game-machine ng-if="ctrl.gState.player.info.id_in_app" after-play-fx="ctrl.afterPlayFx">
   </game-machine>
+
+  <div ng-if="ctrl.gState.player.info.id_in_app">
+    <mission text="10" mission-tag="'win_10_games'">
+    </mission>
+    <mission text="20" mission-tag="'win_20_games'">
+    </mission>
+  </div>
+
 </body>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/angular-md5/angular-md5.min.js"></script>
 <script src="app-build.js"></script>
 </html>

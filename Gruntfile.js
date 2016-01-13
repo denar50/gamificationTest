@@ -10,7 +10,7 @@ module.exports = function(grunt) {
     },
     concat: {
       app: {
-        src: ['app.js', 'directives/**/*.js', '!Gruntfile.js', '!app-build.js'],
+        src: ['app.js', 'directives/**/*.js', 'services/**/*.js', '!Gruntfile.js', '!app-build.js'],
         dest: 'app-build.js'
       }
     },
